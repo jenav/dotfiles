@@ -1,7 +1,6 @@
 if has('nvim') && !has('nvim-0.9')
     lua vim.api.nvim_echo({
-        \ { "starlight requires Neovim 0.9 or later.\n", "WarningMsg" },
-        \ { "Please use the starlight 'legacy' branch if you can't upgrade Neovim.\n", "Normal"} },
+        \ { "starlight requires Neovim 0.9 or later.\n", "WarningMsg" } },
         \ false, {})
     finish
 endif
