@@ -3,10 +3,8 @@ local highlight = vim.api.nvim_set_hl
 
 local none = "NONE"
 -- Background and foreground
-local dark_bg = "#222222"
-local black = dark_bg
+local bg = "#222222"
 local white = "#eeeeee"
-local bg = dark_bg
 
 -- Variations of charcoal-grey
 local grey0 = "#323437"
@@ -21,7 +19,7 @@ local grey30 = "#4e4e4e"
 local grey27 = "#444444"
 local grey23 = "#353535"
 local grey18 = "#2d2d2d"
-local grey15 = dark_bg
+local grey15 = bg
 local grey11 = "#1e1e1e"
 local grey7 = "#121212"
 
@@ -43,7 +41,6 @@ local orange = "#ff894c"
 local M = {}
 
 M.palette = {
-	black = dark_bg,
 	white = white,
 	bg = bg,
 	grey0 = grey0,
@@ -156,7 +153,7 @@ M.style = function()
 	highlight(0, "Normal", { bg = bg, fg = white })
 
 	-- Color of mode text, -- INSERT --
-	highlight(0, "ModeMsg", { fg = grey62 })
+	highlight(0, "ModeMsg", { link = "ZiggyGrey62" })
 
 	-- Comments
 	highlight(0, "Comment", { fg = yellow, italic = true })
@@ -172,10 +169,10 @@ M.style = function()
 	highlight(0, "Boolean", { link = "ZiggyRed" })
 
 	-- Identifiers
-	highlight(0, "Identifier", { fg = grey89 })
+	highlight(0, "Identifier", { link = "ZiggyGrey89" })
 
 	-- Color of titles
-	highlight(0, "Title", { fg = cyan })
+	highlight(0, "Title", { link = "ZiggyCyan" })
 
 	-- const, static
 	highlight(0, "StorageClass", { fg = white, bold = true })
@@ -193,16 +190,16 @@ M.style = function()
 	highlight(0, "Exception", { fg = white, bold = true })
 
 	-- ifdef/endif
-	highlight(0, "PreProc", { fg = orange })
+	highlight(0, "PreProc", { link = "ZiggyOrange" })
 
 	-- case in switch statement
-	highlight(0, "Label", { fg = grey89 })
+	highlight(0, "Label", { link = "ZiggyGrey89" })
 
 	-- end-of-line '$', end-of-file '~'
 	highlight(0, "NonText", { fg = magenta })
 
 	-- sizeof
-	highlight(0, "Operator", { fg = grey89 })
+	highlight(0, "Operator", { link = "ZiggyGrey89" })
 
 	-- Conditional
 	highlight(0, "Conditional", { fg = white, bold = true })
@@ -215,8 +212,8 @@ M.style = function()
 
 	-- Search
 	highlight(0, "Search", { bg = grey1, fg = grey89 })
-	highlight(0, "CurSearch", { bg = magenta, fg = black })
-	highlight(0, "IncSearch", { bg = grey62, fg = black })
+	highlight(0, "CurSearch", { bg = magenta, fg = bg })
+	highlight(0, "IncSearch", { bg = grey62, fg = bg })
 
 	-- '\n' sequences
 	highlight(0, "Special", { link = "ZiggyCyan" })
@@ -231,7 +228,7 @@ M.style = function()
 	highlight(0, "StatusLine", { link = "ZiggyStatusLineMode" })
 	highlight(0, "StatusLineNC", { bg = grey23, fg = grey58 })
 	highlight(0, "Tabline", { bg = grey18, fg = grey62 })
-	highlight(0, "TablineSel", { bg = grey11, fg = blue })
+	highlight(0, "TablineSel", { bg = grey15, fg = yellow })
 	highlight(0, "TablineSelSymbol", { bg = grey11, fg = dark_cyan })
 	highlight(0, "TablineFill", { bg = grey18, fg = grey18 })
 	highlight(0, "StatusLineTerm", { bg = grey18, fg = white })
@@ -240,7 +237,7 @@ M.style = function()
 
 	-- Visual selection
 	-- highlight(0, "Visual", { fg = white, bg = dark_blue })
-	highlight(0, "Visual", { fg = black, bg = grey62 })
+	highlight(0, "Visual", { fg = bg, bg = grey62 })
 	highlight(0, "VisualNOS", { bg = grey0, fg = white })
 
 	-- Errors, warnings and whitespace-eol
@@ -263,7 +260,7 @@ M.style = function()
 
 	-- Misc
 	highlight(0, "Question", { fg = green })
-	highlight(0, "MoreMsg", { fg = red })
+	highlight(0, "MoreMsg", { link = "ZiggyRed" })
 	highlight(0, "LineNr", { fg = grey30 })
 	highlight(0, "Cursor", { fg = bg, bg = blue })
 	highlight(0, "lCursor", { fg = bg, bg = grey62 })
@@ -279,7 +276,7 @@ M.style = function()
 	highlight(0, "Ignore", { link = "ZiggyBlue" })
 	highlight(0, "Underlined", { fg = dark_cyan })
 	highlight(0, "QuickFixLine", { link = "ZiggyCurrentLine" })
-	highlight(0, "Delimiter", { fg = grey89 })
+	highlight(0, "Delimiter", { link = "ZiggyGrey89" })
 	highlight(0, "qfFileName", { link = "ZiggyDarkCyan" })
 
 	-- Color column (after line 80)
@@ -299,7 +296,7 @@ M.style = function()
 	-------------------------------------------------------------------------
 
 	highlight(0, "Whitespace", { fg = grey0 })
-	highlight(0, "TermCursor", { bg = grey62, fg = black })
+	highlight(0, "TermCursor", { bg = grey62, fg = bg })
 	highlight(0, "NormalFloat", { link = "ZiggyStatusLineMode" })
 	highlight(0, "FloatBorder", { bg = bg, fg = grey70 })
 	highlight(0, "FloatTitle", { link = "ZiggyStatusLineMode" })
@@ -314,7 +311,7 @@ M.style = function()
 
 	-- Neovim Tree-sitter
 	highlight(0, "@boolean", { link = "ZiggyRed" })
-	highlight(0, "@attribute", { fg = grey89 })
+	highlight(0, "@attribute", { link = "ZiggyGrey89" })
 	highlight(0, "@comment.error", { link = "ZiggyRed" })
 	highlight(0, "@comment.note", { link = "ZiggyGrey58" })
 	highlight(0, "@comment.ok", { link = "ZiggyGreen" })
@@ -328,19 +325,19 @@ M.style = function()
 	highlight(0, "@diff.minus", { link = "DiffDelete" })
 	highlight(0, "@diff.plus", { link = "DiffAdd" })
 	--highlight(0, "@function", { fg = magenta, bold = true })
-	highlight(0, "@function", { fg = grey89 })
-	highlight(0, "@function.builtin", { fg = orange })
-	highlight(0, "@function.call", { fg = grey89 })
-	highlight(0, "@function.macro", { fg = grey89 })
-	highlight(0, "@function.method", { fg = grey89 })
-	highlight(0, "@function.method.call", { fg = grey89 })
+	highlight(0, "@function", { link = "ZiggyGrey89" })
+	highlight(0, "@function.builtin", { link = "ZiggyOrange" })
+	highlight(0, "@function.call", { link = "ZiggyGrey89" })
+	highlight(0, "@function.macro", { link = "ZiggyGrey89" })
+	highlight(0, "@function.method", { link = "ZiggyGrey89" })
+	highlight(0, "@function.method.call", { link = "ZiggyGrey89" })
 	highlight(0, "@keyword", { fg = white, bold = true })
 	highlight(0, "@keyword.conditional", { link = "Conditional" })
 	highlight(0, "@keyword.directive", { link = "PreProc" })
 	highlight(0, "@keyword.directive.define", { link = "Define" })
 	highlight(0, "@keyword.exception", { link = "ZiggyDarkMagenta" })
-	highlight(0, "@keyword.import", { fg = orange })
-	highlight(0, "@keyword.operator", { fg = grey89 })
+	highlight(0, "@keyword.import", { link = "ZiggyOrange" })
+	highlight(0, "@keyword.operator", { link = "ZiggyGrey89" })
 	highlight(0, "@keyword.repeat", { link = "Repeat" })
 	highlight(0, "@keyword.storage", { link = "StorageClass" })
 	highlight(0, "@markup.environment", { link = "ZiggyDarkMagenta" })
@@ -366,22 +363,22 @@ M.style = function()
 	highlight(0, "@module.builtin", { link = "ZiggyGreen" })
 	highlight(0, "@none", {})
 	highlight(0, "@parameter.builtin", { link = "ZiggyRed" })
-	highlight(0, "@property", { fg = grey89 })
+	highlight(0, "@property", { link = "ZiggyGrey89" })
 	highlight(0, "@string.documentation", { link = "ZiggyGreen" })
 	highlight(0, "@string.regexp", { link = "ZiggyGreen" })
 	highlight(0, "@string.special.path", { link = "ZiggyGreen" })
 	highlight(0, "@string.special.symbol", { link = "ZiggyGreen" })
 	highlight(0, "@string.special.url", { link = "ZiggyGreen" })
-	highlight(0, "@tag", { fg = orange })
-	highlight(0, "@tag.attribute", { fg = orange })
-	highlight(0, "@tag.builtin", { fg = orange })
-	highlight(0, "@tag.delimiter", { fg = grey89 })
+	highlight(0, "@tag", { link = "ZiggyOrange" })
+	highlight(0, "@tag.attribute", { link = "ZiggyOrange" })
+	highlight(0, "@tag.builtin", { link = "ZiggyOrange" })
+	highlight(0, "@tag.delimiter", { link = "ZiggyOrange" })
 	highlight(0, "@type.builtin", { fg = blue, bold = true })
 	highlight(0, "@type.qualifier", { fg = blue, bold = true })
-	highlight(0, "@variable", { fg = grey89 })
-	highlight(0, "@variable.builtin", { fg = orange })
-	highlight(0, "@variable.member", { fg = grey89 })
-	highlight(0, "@variable.parameter", { fg = grey89 })
+	highlight(0, "@variable", { link = "ZiggyGrey89" })
+	highlight(0, "@variable.builtin", { link = "ZiggyOrange" })
+	highlight(0, "@variable.member", { link = "ZiggyGrey89" })
+	highlight(0, "@variable.parameter", { link = "ZiggyGrey89" })
 
 	-- Language specific Tree-sitter overrides.
 	highlight(0, "@attribute.zig", { link = "ZiggyDarkMagenta" })
@@ -411,11 +408,11 @@ M.style = function()
 	highlight(0, "@markup.list.latex", { link = "ZiggyMagenta" })
 	highlight(0, "@markup.raw.vimdoc", { link = "ZiggyRed" })
 	highlight(0, "@namespace.latex", { link = "ZiggyDarkMagenta" })
-	highlight(0, "@punctuation.delimiter.astro", { fg = grey89 })
-	highlight(0, "@punctuation.delimiter.css", { fg = grey89 })
-	highlight(0, "@punctuation.delimiter.rust", { fg = grey89 })
-	highlight(0, "@punctuation.delimiter.scss", { fg = grey89 })
-	highlight(0, "@punctuation.delimiter.yaml", { fg = grey89 })
+	highlight(0, "@punctuation.delimiter.astro", { link = "ZiggyGrey89" })
+	highlight(0, "@punctuation.delimiter.css", { link = "ZiggyGrey89" })
+	highlight(0, "@punctuation.delimiter.rust", { link = "ZiggyGrey89" })
+	highlight(0, "@punctuation.delimiter.scss", { link = "ZiggyGrey89" })
+	highlight(0, "@punctuation.delimiter.yaml", { link = "ZiggyGrey89" })
 	highlight(0, "@variable.builtin.vim", { link = "ZiggyDarkCyan" })
 	highlight(0, "@variable.member.yaml", { link = "ZiggyBlue" })
 	highlight(0, "@variable.parameter.bash", { link = "ZiggyWhite" })
@@ -436,7 +433,7 @@ M.style = function()
 	highlight(0, "@lsp.type.keyword", { link = "@keyword" })
 	highlight(0, "@lsp.type.lifetime", { link = "@storageclass" })
 	highlight(0, "@lsp.type.macro", {}) -- Use fallback Tree-sitter style for this Semantic Token
-	highlight(0, "@lsp.type.magicFunction", { fg = grey89 })
+	highlight(0, "@lsp.type.magicFunction", { link = "ZiggyGrey89" })
 	highlight(0, "@lsp.type.namespace", { link = "@namespace" })
 	highlight(0, "@lsp.type.number", { link = "@number" })
 	highlight(0, "@lsp.type.operator", {}) -- Use fallback Tree-sitter style for this Semantic Token
@@ -452,14 +449,14 @@ M.style = function()
 	highlight(0, "@lsp.typemod.class.defaultLibrary", { link = "@type" })
 	highlight(0, "@lsp.typemod.enum.defaultLibrary", { link = "@type" })
 	highlight(0, "@lsp.typemod.enumMember.defaultLibrary", { link = "@constant.builtin" })
-	highlight(0, "@lsp.typemod.function.defaultLibrary", { fg = grey89 })
+	highlight(0, "@lsp.typemod.function.defaultLibrary", { link = "ZiggyGrey89" })
 	highlight(0, "@lsp.typemod.keyword.async", { link = "@keyword" })
 	highlight(0, "@lsp.typemod.keyword.injected", { link = "@keyword" })
-	highlight(0, "@lsp.typemod.method.defaultLibrary", { fg = grey89 })
+	highlight(0, "@lsp.typemod.method.defaultLibrary", { link = "ZiggyGrey89" })
 	highlight(0, "@lsp.typemod.operator.injected", { link = "@operator" })
 	highlight(0, "@lsp.typemod.string.injected", { link = "@string" })
 	highlight(0, "@lsp.typemod.struct.defaultLibrary", { link = "@type" })
-	highlight(0, "@lsp.typemod.variable.callable", { fg = grey89 })
+	highlight(0, "@lsp.typemod.variable.callable", { link = "ZiggyGrey89" })
 	highlight(0, "@lsp.typemod.variable.defaultLibrary", { link = "@variable.builtin" })
 	highlight(0, "@lsp.typemod.variable.injected", { link = "@variable" })
 	highlight(0, "@lsp.typemod.variable.static", { link = "@constant" })
@@ -480,11 +477,11 @@ M.style = function()
 	highlight(0, "DiagnosticUnderlineInfo", { undercurl = true, sp = blue })
 	highlight(0, "DiagnosticUnderlineHint", { undercurl = true, sp = cyan })
 	highlight(0, "DiagnosticUnderlineOk", { undercurl = true, sp = dark_cyan })
-	highlight(0, "DiagnosticVirtualTextError", { bg = grey11, fg = red })
-	highlight(0, "DiagnosticVirtualTextWarn", { bg = grey11, fg = yellow })
-	highlight(0, "DiagnosticVirtualTextInfo", { bg = grey11, fg = blue })
-	highlight(0, "DiagnosticVirtualTextHint", { bg = grey11, fg = cyan })
-	highlight(0, "DiagnosticVirtualTextOk", { bg = grey11, fg = dark_cyan })
+	highlight(0, "DiagnosticVirtualTextError", { bg = grey23, fg = red })
+	highlight(0, "DiagnosticVirtualTextWarn", { bg = grey23, fg = grey50 })
+	highlight(0, "DiagnosticVirtualTextInfo", { bg = grey23, fg = grey62 })
+	highlight(0, "DiagnosticVirtualTextHint", { bg = grey23, fg = cyan })
+	highlight(0, "DiagnosticVirtualTextOk", { bg = grey23, fg = dark_cyan })
 	highlight(0, "DiagnosticSignError", { link = "ZiggyRed" })
 	highlight(0, "DiagnosticSignWarn", { link = "ZiggyYellow" })
 	highlight(0, "DiagnosticSignInfo", { link = "ZiggyBlue" })
@@ -659,11 +656,11 @@ M.style = function()
 	highlight(0, "fishVariable", { link = "ZiggyCyan" })
 
 	-- FZF plugin
-	highlight(0, "FzfBorder", { fg = grey18 })
-	highlight(0, "FzfFgPlus", { fg = grey89 })
-	highlight(0, "FzfNormal", { fg = grey70 })
+	highlight(0, "FzfBorder", { link = "ZiggyGrey18" })
+	highlight(0, "FzfFgPlus", { link = "ZiggyGrey89" })
+	highlight(0, "FzfNormal", { link = "ZiggyGrey70" })
 	highlight(0, "FzfPrompt", { fg = blue, bg = grey18 })
-	highlight(0, "FzfSubstring", { fg = red })
+	highlight(0, "FzfSubstring", { link = "ZiggyRed" })
 	g.fzf_colors = {
 		["fg"] = { "fg", "FzfNormal" },
 		["bg"] = { "bg", "Normal" },
@@ -718,11 +715,11 @@ M.style = function()
 	highlight(0, "NvimTreeSpecialFile", { link = "ZiggyYellow" })
 	highlight(0, "NvimTreeWindowPicker", { link = "DiffChange" })
 	highlight(0, "NvimTreeCursorLine", { link = "ZiggyCurrentLine" })
-	highlight(0, "NvimTreeExecFile", { fg = green })
-	highlight(0, "NvimTreeImageFile", { fg = dark_magenta })
+	highlight(0, "NvimTreeExecFile", { link = "ZiggyGreen" })
+	highlight(0, "NvimTreeImageFile", { link = "ZiggyDarkMagenta" })
 	highlight(0, "NvimTreeNormalFloat", { bg = bg, fg = grey70 }) -- transparent??
-	highlight(0, "NvimTreeOpenedFile", { fg = yellow })
-	highlight(0, "NvimTreeSymlink", { fg = cyan })
+	highlight(0, "NvimTreeOpenedFile", { link = "ZiggyYellow" })
+	highlight(0, "NvimTreeSymlink", { link = "ZiggyCyan" })
 
 	-- Neo-tree plugin
 	highlight(0, "NeoTreeCursorLine", { link = "ZiggyCurrentLine" })
@@ -742,12 +739,12 @@ M.style = function()
 	highlight(0, "NeoTreeTitleBar", { bg = grey18, fg = white })
 
 	-- Telescope plugin
-	highlight(0, "TelescopeBorder", { fg = grey62 })
+	highlight(0, "TelescopeBorder", { link = "ZiggyGrey62" })
 	-- highlight(0, "TelescopeBorder", { link = "ZiggyStatusLineMode" })
 	highlight(0, "TelescopeMatching", { link = "ZiggyRed" })
 	highlight(0, "TelescopeMultiIcon", { link = "ZiggyDarkRed" })
 	highlight(0, "TelescopeMultiSelection", { link = "ZiggyDarkCyan" })
-	highlight(0, "TelescopeNormal", { fg = grey62 })
+	highlight(0, "TelescopeNormal", { link = "ZiggyGrey62" })
 	-- highlight(0, "TelescopeNormal", { link = "ZiggyStatusLineMode" })
 	highlight(0, "TelescopePreviewDate", { link = "ZiggyGrey62" })
 	highlight(0, "TelescopePreviewGroup", { link = "ZiggyGrey62" })
@@ -786,9 +783,9 @@ M.style = function()
 	highlight(0, "GitSignsAddLnInline", { bg = grey1 })
 	highlight(0, "GitSignsChangeLnInline", { bg = grey1 })
 	--   word diff in preview
-	highlight(0, "GitSignsAddInline", { bg = green, fg = black })
-	highlight(0, "GitSignsChangeInline", { bg = yellow, fg = black })
-	highlight(0, "GitSignsDeleteInline", { bg = red, fg = black })
+	highlight(0, "GitSignsAddInline", { bg = green, fg = bg })
+	highlight(0, "GitSignsChangeInline", { bg = yellow, fg = bg })
+	highlight(0, "GitSignsDeleteInline", { bg = red, fg = bg })
 	--   misc
 	highlight(0, "GitSignsAddPreview", { link = "ZiggyDarkCyanLine" })
 	highlight(0, "GitSignsDeletePreview", { link = "ZiggyDarkRedLine" })
@@ -836,8 +833,8 @@ M.style = function()
 	highlight(0, "BufferAlternateHINT", { link = "BufferCurrentHINT" })
 
 	-- Bufferline plugin
-	highlight(0, "BufferLineTabSelected", { fg = blue })
-	highlight(0, "BufferLineIndicatorSelected", { fg = blue })
+	highlight(0, "BufferLineTabSelected", { link = "ZiggyBlue" })
+	highlight(0, "BufferLineIndicatorSelected", { link = "ZiggyBlue" })
 
 	-- nvim-cmp plugin
 	highlight(0, "CmpItemAbbrMatch", { link = "ZiggyYellow" })
@@ -1015,39 +1012,18 @@ M.style = function()
 	highlight(0, "NotifyTRACETitle", { link = "ZiggyMagenta" })
 
 	-- lazy.nvim plugin
-	highlight(0, "LazyButton", { bg = grey23, fg = white })
-	highlight(0, "LazyButtonActive", { bg = grey15, fg = grey89 })
-	-- highlight(0, "LazyComment", { bg = black, fg = grey89 })
+	highlight(0, "LazyButton", { bg = grey15, fg = white })
+	highlight(0, "LazyButtonActive", { bg = grey30, fg = grey89 })
 	highlight(0, "LazyCommit", { link = "ZiggyDarkCyan" })
-	-- highlight(0, "LazyCommitIssue", { bg = black, fg = grey89 })
-	-- highlight(0, "LazyCommitScope", { bg = black, fg = grey89 })
 	highlight(0, "LazyCommitType", { link = "ZiggyDarkMagenta" })
-	-- highlight(0, "LazyDir", { bg = black, fg = grey89 })
 	highlight(0, "LazyH1", { link = "ZiggyBlueMode" })
-	-- highlight(0, "LazyH2", { bg = black, fg = grey89 })
-	-- highlight(0, "LazyLocal", { bg = black, fg = grey89 })
-	-- highlight(0, "LazyNoCond", { bg = black, fg = grey89 })
-	-- highlight(0, "LazyNormal", { bg = black, fg = grey89 })
 	highlight(0, "LazyProgressDone", { link = "ZiggyBlue" })
 	highlight(0, "LazyProgressTodo", { link = "ZiggyGrey0" })
-	-- highlight(0, "LazyProp", { bg = black, fg = grey89 })
 	highlight(0, "LazyReasonCmd", { link = "ZiggyGreen" })
-	-- highlight(0, "LazyReasonEvent", { bg = black, fg = grey89 })
-	-- highlight(0, "LazyReasonFt", { bg = black, fg = grey89 })
-	-- highlight(0, "LazyReasonImport", { bg = black, fg = grey89 })
-	-- highlight(0, "LazyReasonKeys", { bg = black, fg = grey89 })
 	highlight(0, "LazyReasonPlugin", { link = "ZiggyRed" })
-	-- highlight(0, "LazyReasonRequire", { bg = black, fg = grey89 })
 	highlight(0, "LazyReasonRuntime", { link = "ZiggyDarkMagenta" })
-	-- highlight(0, "LazyReasonSource", { bg = black, fg = grey89 })
-	-- highlight(0, "LazyReasonStart", { bg = black, fg = grey89 })
-	highlight(0, "LazySpecial", { link = "ZiggyBlue" })
-	-- highlight(0, "LazyTaskError", { bg = black, fg = grey89 })
-	-- highlight(0, "LazyTaskOutput", { bg = black, fg = grey89 })
-	-- highlight(0, "LazyUrl", { bg = black, fg = grey89 })
-	-- highlight(0, "LazyValue", { bg = black, fg = grey89 })
-	highlight(0, "LazyDimmed", { fg = grey58 })
-	-- highlight(0, "LazyNoCond", { bg = black, fg = grey89 })
+	highlight(0, "LazySpecial", { link = "ZiggyGrey89" })
+	highlight(0, "LazyDimmed", { link = "ZiggyGrey58" })
 
 	-- mason.nvim plugin
 	highlight(0, "MasonError", { link = "ZiggyRed" })
@@ -1232,7 +1208,6 @@ end
 -- User customization of theme colors.
 --
 M.custom_colors = function(colors)
-	black = colors.black and colors.black or M.palette.black
 	white = colors.white and colors.white or M.palette.white
 	bg = colors.bg and colors.bg or M.palette.bg
 	grey0 = colors.grey0 and colors.grey0 or M.palette.grey0
